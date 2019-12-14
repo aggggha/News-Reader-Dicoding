@@ -32,7 +32,7 @@
 
     <!-- Save button -->
     <div class="fixed-action-btn">
-        <a href="#" class="btn-floating btn-large red waves-effect" id="save">
+        <a onclick="M.toast({html: 'I am a toast'})" class="btn-floating btn-large red waves-effect" id="save">
             <i class="large material-icons">save</i>
         </a>
     </div>
@@ -40,8 +40,8 @@
     <script src="node_modules/idb/lib/idb.js"></script>
     <script type="text/javascript" src="https://unpkg.com/snarkdown@1.0.2/dist/snarkdown.umd.js"></script>
     <script src="js/materialize.min.js"></script>
-    <script src="js/api.js"></script>
     <script src="js/db.js"></script>
+    <script src="js/api.js"></script>
 
     <script>
         // REGISTER SERVICE WORKER
@@ -62,16 +62,27 @@
 
         // REQUEST API
         document.addEventListener("DOMContentLoaded", function () {
-            var item = getArticleById();
+            var urlParams = new URLSearchParams(window.location.search);
+            var isFromSaved = urlParams.get("saved");
 
-            // Save button
-            var save = document.getElementById("save");
-            save.onclick = function () {
+            var btnSave = document.getElementById("save");
+
+            if (isFromSaved) {
+                // Menyembunyikan FAB save jika true
+                btnSave.style.display = "none";
+
+                // Ambil dari indexedDB
+                getSavedArticleById();
+            } else {
+                var item = getArticleById();
+            }
+
+            btnSave.onclick = function () {
                 console.log("Tombol FAB di klik");
                 item.then(function (article) {
                     saveForLater(article);
                 });
-            }
+            };
         });
     </script>
 </body>

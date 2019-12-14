@@ -1,0 +1,3 @@
+### About this repository
+_Ditulis ulang (oleh saya) untuk keperluan error checking_
+Membuat Aplikasi News Reader dari [Dicoding - Kelas Membangun Progressive Web Apps](https://www.dicoding.com/academies/74/), kamu juga bisa menemukannya di repositori [Dicoding](https://github.com/dicodingacademy) dari tautan berikut: [https://github.com/dicodingacademy/a74-mpwa-labs/](https://github.com/dicodingacademy/a74-mpwa-labs/)
